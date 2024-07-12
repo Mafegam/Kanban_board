@@ -1,0 +1,39 @@
+.boardWrapper {
+    margin: 110px 150px 0 150px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    justify-items: center;
+}
+
+.boardTitle {
+    color: #1D2E38;
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+    font-weight: 450;
+    margin: 8px auto 0 15px;
+}
+
+.to-do-wrapper {
+    background-color: #EBEBEB;
+    width: 450px;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.144), 0 6px 20px 0 rgba(0, 0, 0, 0.123);
+
+}
+
+.in-progress-wrapper {
+    background-color: #EBEBEB;
+    width: 450px;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.144), 0 6px 20px 0 rgba(0, 0, 0, 0.123);
+
+}
+
+.done-wrapper {
+    background-color: #EBEBEB;
+    width: 450px;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.144), 0 6px 20px 0 rgba(0, 0, 0, 0.123);
+
+}

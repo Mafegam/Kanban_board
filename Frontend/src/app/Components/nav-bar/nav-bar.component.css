@@ -1,0 +1,40 @@
+header {
+    background-color: #E1C3B0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.navWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 90px;
+    height: 70px;
+    align-items: center;
+}
+
+.nav-logo {
+    color: #1D2E38;
+    font-family: "Roboto", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.nav-btn {
+    background-color: #658294;
+    font-family: "Roboto", sans-serif;
+    color: white;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.356), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: 0.7s;
+}
+
+.nav-btn:hover {
+    background-color: #698474;
+}
