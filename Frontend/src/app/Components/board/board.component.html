@@ -1,21 +1,50 @@
 <app-nav-bar></app-nav-bar>
 
-<main>
-    <div class="boardWrapper">
-        <div class="to-do-wrapper">
-            <div class="boardTitle">To Do</div>
-            <!-- <div># items</div> -->
+<div class="boardWrapper">
+    <div class="listWrapper">
+        <div class="titleContainer">
+            <h2>To do</h2>
+            <h3>| {{todo.length}}</h3>
         </div>
-        <div class="in-progress-wrapper">
-            <div class="boardTitle">In Progress</div>
-            <!-- <div># items</div> -->
-        </div>
-        <div class="done-wrapper">
-            <div class="boardTitle">Done</div>
-            <!-- <div># items</div> -->
+
+
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+            [cdkDropListConnectedTo]="[todoList, progressList]" class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            @for (item of todo; track item) {
+            <div class="example-box" cdkDrag>{{item}}</div>
+            }
         </div>
     </div>
-</main>
 
+    <div class="listWrapper">
+        <div class="titleContainer">
+            <h2>In Progress</h2>
+            <h3>| {{progress.length}}</h3>
+        </div>
+
+        <div cdkDropList #progressList="cdkDropList" [cdkDropListData]="progress"
+            [cdkDropListConnectedTo]="[todoList, doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
+            @for (item of progress; track item) {
+            <div class="example-box" cdkDrag>{{item}}</div>
+            }
+        </div>
+    </div>
+
+    <div class="listWrapper">
+        <div class="titleContainer">
+            <h2>Done</h2>
+            <h3>| {{done.length}}</h3>
+        </div>
+
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+            [cdkDropListConnectedTo]="[todoList, progressList]" class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            @for (item of done; track item) {
+            <div class="example-box" cdkDrag>{{item}}</div>
+            }
+        </div>
+    </div>
+</div>
 
 <app-footer></app-footer>
