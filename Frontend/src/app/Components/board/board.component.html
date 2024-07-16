@@ -5,17 +5,18 @@
     <div class="listWrapper">
         <div class="titleContainer">
             <h2>To do</h2>
-            <h3>| {{ss.length}}</h3>
+            <h3>| {{tasksArray.length}}</h3>
         </div>
 
-        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="ss"
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="tasksArray"
             [cdkDropListConnectedTo]="[todoList, progressList]" class="example-list"
             (cdkDropListDropped)="drop($event)">
-            @for (item of ss; track item) {
-            <div class="example-box" cdkDrag>{{item}}</div>
-            }
+
+            <div *ngFor="let addedTask of tasksArray" class="example-box" cdkDrag>{{addedTask}}</div>
         </div>
     </div>
+
+
 
     <!-- PROGRESS -->
     <div class="listWrapper">
@@ -49,7 +50,7 @@
     </div>
 
     <!-- DIALOG -->
-    <ol>
+    <!-- <ol>
         
         <li>
             <button mat-raised-button (click)="openDialog()">Add Task</button>
@@ -60,8 +61,10 @@
             You chose: <em>{{todo()}}</em>
         </li>
         }
-    </ol>
+    </ol> -->
 
-    <!-- </div> -->
+    <input type="text" placeholder="Enter" [(ngModel)]="addedTask">
+    <button type="button" (click)="add()">Add</button>
+
 
     <app-footer></app-footer>
