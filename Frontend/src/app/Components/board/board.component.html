@@ -1,22 +1,23 @@
 <app-nav-bar></app-nav-bar>
 
 <div class="boardWrapper">
+    <!-- TO DO -->
     <div class="listWrapper">
         <div class="titleContainer">
             <h2>To do</h2>
-            <h3>| {{todo.length}}</h3>
+            <h3>| {{ss.length}}</h3>
         </div>
 
-
-        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="ss"
             [cdkDropListConnectedTo]="[todoList, progressList]" class="example-list"
             (cdkDropListDropped)="drop($event)">
-            @for (item of todo; track item) {
+            @for (item of ss; track item) {
             <div class="example-box" cdkDrag>{{item}}</div>
             }
         </div>
     </div>
 
+    <!-- PROGRESS -->
     <div class="listWrapper">
         <div class="titleContainer">
             <h2>In Progress</h2>
@@ -31,6 +32,7 @@
         </div>
     </div>
 
+    <!-- DONE -->
     <div class="listWrapper">
         <div class="titleContainer">
             <h2>Done</h2>
@@ -45,6 +47,21 @@
             }
         </div>
     </div>
-</div>
 
-<app-footer></app-footer>
+    <!-- DIALOG -->
+    <ol>
+        
+        <li>
+            <button mat-raised-button (click)="openDialog()">Add Task</button>
+        </li>
+
+        @if (todo()) {
+        <li>
+            You chose: <em>{{todo()}}</em>
+        </li>
+        }
+    </ol>
+
+    <!-- </div> -->
+
+    <app-footer></app-footer>
