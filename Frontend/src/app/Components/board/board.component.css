@@ -7,7 +7,6 @@
 }
 
 h2 {
-
     color: #1D2E38;
     font-family: "Roboto", sans-serif;
     font-size: 25px;
@@ -86,4 +85,38 @@ h3 {
 
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* ACORDEON */
+.accordionContainer {
+    border: 2px dashed rgba(138, 138, 138, 0.575);
+    border-radius: 5px;
+    padding: 8px 180px;
+}
+
+.accordionBody {
+    display: flex;
+    flex-direction: column;
+}
+
+.taskInput {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.add-btn {
+    background-color: #CB9180;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 0 3px 3px rgba(189, 189, 189, 0.479);
+}
+
+svg{
+    color: grey;
 }

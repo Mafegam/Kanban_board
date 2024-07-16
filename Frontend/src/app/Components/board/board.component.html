@@ -9,14 +9,29 @@
         </div>
 
         <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="tasksArray"
-            [cdkDropListConnectedTo]="[todoList, progressList]" class="example-list"
+            [cdkDropListConnectedTo]="[doneList, progressList]" class="example-list"
             (cdkDropListDropped)="drop($event)">
 
-            <div *ngFor="let addedTask of tasksArray" class="example-box" cdkDrag>{{addedTask}}</div>
+            <div class="taskContainer" *ngFor="let addedTask of tasksArray" class="example-box" cdkDrag>
+                {{addedTask}}
+                <!-- BOTON ELIMINAR TASK -->
+                <button class="delete-btn" type="button" (click)="deleteFromTodo(0)"><svg
+                        xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0,0,256,256">
+                        <g fill="#888888" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                            style="mix-blend-mode: normal">
+                            <g transform="scale(4,4)">
+                                <path
+                                    d="M28,6c-2.209,0 -4,1.791 -4,4v2h-0.40039l-13.59961,2v3h44v-3l-13.59961,-2h-0.40039v-2c0,-2.209 -1.791,-4 -4,-4zM28,10h8v2h-8zM12,19l2.70117,33.32227c0.168,2.077 1.90428,3.67773 3.98828,3.67773h26.62305c2.084,0 3.81733,-1.59878 3.98633,-3.67578l2.625,-32.32422zM20,26c1.105,0 2,0.895 2,2v23h-3l-1,-23c0,-1.105 0.895,-2 2,-2zM32,26c1.657,0 3,1.343 3,3v22h-6v-22c0,-1.657 1.343,-3 3,-3zM44,26c1.105,0 2,0.895 2,2l-1,23h-3v-23c0,-1.105 0.895,-2 2,-2z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg></button>
+
+            </div>
         </div>
     </div>
-
-
 
     <!-- PROGRESS -->
     <div class="listWrapper">
@@ -27,9 +42,27 @@
 
         <div cdkDropList #progressList="cdkDropList" [cdkDropListData]="progress"
             [cdkDropListConnectedTo]="[todoList, doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
-            @for (item of progress; track item) {
-            <div class="example-box" cdkDrag>{{item}}</div>
-            }
+            <div class="taskContainer">
+                @for (item of progress; track item) {
+                <!-- BOTON ELIMINAR TASK -->
+                <div class="example-box" cdkDrag>{{item}} <button type="button" (click)="deleteFromProgress(0)"><svg
+                            xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
+                            viewBox="0,0,256,256">
+                            <g fill="#888888" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                style="mix-blend-mode: normal">
+                                <g transform="scale(4,4)">
+                                    <path
+                                        d="M28,6c-2.209,0 -4,1.791 -4,4v2h-0.40039l-13.59961,2v3h44v-3l-13.59961,-2h-0.40039v-2c0,-2.209 -1.791,-4 -4,-4zM28,10h8v2h-8zM12,19l2.70117,33.32227c0.168,2.077 1.90428,3.67773 3.98828,3.67773h26.62305c2.084,0 3.81733,-1.59878 3.98633,-3.67578l2.625,-32.32422zM20,26c1.105,0 2,0.895 2,2v23h-3l-1,-23c0,-1.105 0.895,-2 2,-2zM32,26c1.657,0 3,1.343 3,3v22h-6v-22c0,-1.657 1.343,-3 3,-3zM44,26c1.105,0 2,0.895 2,2l-1,23h-3v-23c0,-1.105 0.895,-2 2,-2z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg></button></div>
+
+
+                }
+            </div>
         </div>
     </div>
 
@@ -44,27 +77,40 @@
             [cdkDropListConnectedTo]="[todoList, progressList]" class="example-list"
             (cdkDropListDropped)="drop($event)">
             @for (item of done; track item) {
-            <div class="example-box" cdkDrag>{{item}}</div>
+            <div class="example-box" cdkDrag>{{item}}<button type="button" (click)="deleteFromDone(0)"><svg
+                        xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0,0,256,256">
+                        <g fill="#888888" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                            style="mix-blend-mode: normal">
+                            <g transform="scale(4,4)">
+                                <path
+                                    d="M28,6c-2.209,0 -4,1.791 -4,4v2h-0.40039l-13.59961,2v3h44v-3l-13.59961,-2h-0.40039v-2c0,-2.209 -1.791,-4 -4,-4zM28,10h8v2h-8zM12,19l2.70117,33.32227c0.168,2.077 1.90428,3.67773 3.98828,3.67773h26.62305c2.084,0 3.81733,-1.59878 3.98633,-3.67578l2.625,-32.32422zM20,26c1.105,0 2,0.895 2,2v23h-3l-1,-23c0,-1.105 0.895,-2 2,-2zM32,26c1.657,0 3,1.343 3,3v22h-6v-22c0,-1.657 1.343,-3 3,-3zM44,26c1.105,0 2,0.895 2,2l-1,23h-3v-23c0,-1.105 0.895,-2 2,-2z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg></button></div>
             }
         </div>
     </div>
 
-    <!-- DIALOG -->
-    <!-- <ol>
-        
-        <li>
-            <button mat-raised-button (click)="openDialog()">Add Task</button>
-        </li>
-
-        @if (todo()) {
-        <li>
-            You chose: <em>{{todo()}}</em>
-        </li>
-        }
-    </ol> -->
-
-    <input type="text" placeholder="Enter" [(ngModel)]="addedTask">
-    <button type="button" (click)="add()">Add</button>
+    <!-- ACCORDION -->
+    <cdk-accordion class="example-accordion">
+        <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0">
+            <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+                <span class="accordionContainer" style="color: grey;">
+                    Add Task
+                </span>
+            </div>
+            <br>
+            <!-- INPUT -->
+            <div class="accordionBody" role="region" [style.display]="accordionItem.expanded ? '' : 'none'"
+                [attr.id]="'accordion-body-' " [attr.aria-labelledby]="'accordion-header-'">
+                <input class="taskInput" type="text" placeholder="Walk the dog" [(ngModel)]="addedTask">
+                <button class="add-btn" type="button" (click)="add()">ADD</button>
+            </div>
+        </cdk-accordion-item>
+    </cdk-accordion>
 
 
     <app-footer></app-footer>
